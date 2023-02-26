@@ -19,7 +19,7 @@ public class RankDao {
 		String sql = "SELECT V.M_NO M_NO, M.M_NAME M_NAME, COUNT(*) cnt"
 				+ " FROM TBL_VOTE_202005 V"
 				+ " JOIN TBL_MEMBER_202005 M"
-				+ "   ON M.M_NO = V.M_NO"
+				+ " ON M.M_NO = V.M_NO WHERE V.V_CONFIRM = 'Y'"
 				+ " GROUP BY V.M_NO, M.M_NAME"
 				+ " ORDER BY COUNT(*) DESC";
 		
