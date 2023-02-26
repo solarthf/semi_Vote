@@ -4,17 +4,8 @@
 
 
 ## 개발환경
-| 개발환경 |  |
-| :---: | --- |
-| 운영체제 | Windows 10 64bit |
-| 개발언어 | Java, HTML5, JSP, JavaScript, jQuery, SQL |
-| 개발도구 | Eclipse, SQLdeveloper |
-| 데이터베이스 | Oracle 21c |
-| WAS | Apache Tomcat 9 |
-| 웹브라우저 | Chrome |
-| 형상관리시스템 | Git |
-| 라이브러리 | jstl-1.2, ojdbc8 |
-| 프레임워크 | Bootstrap |
+![0](https://user-images.githubusercontent.com/115023222/221409034-058103db-1c0b-46d1-963b-1b2cc7dc12bb.png)
+
 
 ## 메인 화면
 ![1](https://user-images.githubusercontent.com/115023222/221407639-aeabcb85-4995-4965-bc53-55c28764fa4d.png)
