@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.dao.MemberDao;
 import member.model.service.MemberService;
+import member.model.service.RankService;
 import member.model.service.VotetestService;
 import member.model.vo.MemberVo;
 import member.model.vo.VotetestVo;
@@ -34,6 +35,7 @@ public class VoteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("memberlist", new MemberService().getMemberList());
 		request.getRequestDispatcher("/WEB-INF/view/vote.jsp").forward(request, response);
 	}
 

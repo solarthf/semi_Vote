@@ -32,12 +32,10 @@
                 <div class="col text-center fw-semibold border-end">후보번호</div>
                 <div class="col-5">
                     <select name="memberNo" class="form-select">
-                    	<option selected></option>			 
-                        <option value="1">[1] 김후보</option>
-                        <option value="2">[2] 이후보</option>
-                        <option value="3">[3] 박후보</option>
-                        <option value="4">[4] 조후보</option>
-                        <option value="5">[5] 최후보</option>
+                	<c:forEach items="${memberlist }" var="vo">
+                        <option selected></option>	
+                        <option value="${vo.memberNo }" ${requestScope.vo.memberNo eq vo.memberNo ? "selected" : "" }>[${vo.memberNo }] ${vo.memberName }</option>
+                    </c:forEach>
                     </select>
                 </div>
                 <div class="col"></div>
@@ -83,7 +81,9 @@
 	    }
 	    if(element.value.length > 0) {	 
 	        element.setAttribute("is-valid", true);
-	    } else {	        
+	    } else if (element.value == "Y" || element.value == "N") {
+	    	element.setAttribute("is-valid", true);
+		} else {	        
 	        element.setAttribute("is-valid", false);
 	    }
 	}
@@ -94,11 +94,24 @@
 	    var memberNo = form.memberNo.getAttribute("is-valid") === "true" ? true : false; 
 	    var vTime = form.vTime.getAttribute("is-valid") === "true" ? true : false; 
 	    var vArea = form.vArea.getAttribute("is-valid") === "true" ? true : false; 
+	    var vConfirm = form.vConfirm.getAttribute("is-valid") === "true" ? true : false; 
 
-	    if(vJumin&&vName&&memberNo&&vTime&&vArea) {
+	    if(vJumin&&vName&&memberNo&&vTime&&vArea&&vConfirm) {
 	        return true;
 	    } else {
-	        alert("다시 입력해주세요");
+	    	if(!vJumin){
+	    		alert("주민번호가 입력되지 않았습니다.");
+	    	} else if (!vName) {
+	    		alert("성명이 입력되지 않았습니다.");
+			} else if (!memberNo) {
+	    		alert("후보번호가 선택되지 않았습니다.");
+			} else if (!vTime) {
+	    		alert("투표시간이 선택되지 않았습니다.");
+			} else if (!vArea) {
+	    		alert("투표장소가 선택되지 않았습니다.");
+			} else if (!vConfirm) {
+				 alert("유권자 확인이 선택되지 않았습니다.");
+			}
 	        location.href="<%=request.getContextPath()%>/vote";
 	        return false;
 	    }
